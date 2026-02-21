@@ -1,0 +1,203 @@
+@extends("partials/main")
+
+<head>
+
+    @extends("partials/title-meta", {"title": "Starter Page"}) @extends("partials/head-css")
+
+</head>
+
+@extends("partials/body")
+
+<!-- Begin page -->
+<div id="layout-wrapper">
+
+    @extends("partials/menu")
+
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="main-content">
+
+        <div class="page-content">
+            <div class="container-fluid">
+
+                @extends("partials/page-title", {"pagetitle": "Contacts", "title": "Profile"})
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#home1" role="tab" aria-selected="true">
+                            <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                            <span class="d-none d-sm-block">General</span> 
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#messages1" role="tab" aria-selected="false">
+                            <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
+                            <span class="d-none d-sm-block">Reviews</span>   
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content p-3 text-muted">
+                    <div class="tab-pane active" id="home1" role="tabpanel">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-4">Create New Product</h4>
+                                        <form class="outer-repeater" method="post">
+                                            <div data-repeater-list="outer-group" class="outer">
+                                                <div data-repeater-item="" class="outer">
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <div class="form-group mb-4">
+                                                                <label for="taskname" class="col-form-label">Product Name</label>
+                                                                <input id="taskname" name="outer-group[0][taskname]" type="text" class="form-control" placeholder="NFT Monitor">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="form-group mb-4">
+                                                                <label for="taskname" class="col-form-label">Product Name</label>
+                                                                <input id="taskname" name="outer-group[0][taskname]" type="text" class="form-control" placeholder="NFT Monitor">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <div class="form-group mb-4">
+                                                                <label for="taskname" class="col-form-label">Product Name</label>
+                                                                <input id="taskname" name="outer-group[0][taskname]" type="text" class="form-control" placeholder="NFT Monitor">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="form-group mb-4">
+                                                                <label for="taskname" class="col-form-label">Product Name</label>
+                                                                <input id="taskname" name="outer-group[0][taskname]" type="text" class="form-control" placeholder="NFT Monitor">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row mb-4">
+                                                        <div class="col-3">
+                                                            <label for="taskbudget" class="col-form-label">Site Status</label>
+                                                            <select class="form-select">
+                                                                <option>Live</option>
+                                                                <option>Offline</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </form>
+                                        <div class="justify-content-center">
+                                            <button type="submit" class="btn btn-primary">Edit Product</button>
+                                        </div>
+        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+                    </div>
+                    <div class="tab-pane" id="messages1" role="tabpanel">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title mb-4">Reviews</h4>
+                                    <form class="outer-repeater" method="post">
+                                        <div data-repeater-list="outer-group" class="outer">
+                                            <div data-repeater-item="" class="outer">
+                                                <div class="form-group mb-4">
+                                                    <label class="col-form-label">Reviews</label>
+                                                    <textarea id="taskdesc-editor" class="form-control" name="outer-group[0][area]"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div class="justify-content-center">
+                                        <button type="submit" class="btn btn-primary">Post Review</button>
+                                    </div>
+                                    <br>
+                                    <div class="table-responsive">
+                                        <table class="table table-nowrap table-hover mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Review</th>
+                                                    <th scope="col">Date</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</td>
+                                                    <td>04/05/2022</td>
+                                                    <td style="width: 100px">
+                                                        <a href="#" class="btn btn-outline-secondary btn-sm edit" title="Delete">
+                                                                    Delete
+                                                                </a>
+                                                    </td>
+                                                </tr>
+        
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+
+
+        @extends("partials/footer")
+    </div>
+    <!-- end main content-->
+
+</div>
+<!-- END layout-wrapper -->
+
+@extends("partials/right-sidebar") @extends("partials/vendor-scripts")
+
+<!-- JAVASCRIPT -->
+<script src="assets/libs/jquery/jquery.min.js"></script>
+<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="assets/libs/simplebar/simplebar.min.js"></script>
+<script src="assets/libs/node-waves/waves.min.js"></script>
+
+<!-- apexcharts -->
+<script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+
+<script src="assets/js/pages/profile.init.js"></script>
+
+<!-- Required datatable js -->
+<script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+<!-- Buttons examples -->
+<script src="assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+<script src="assets/libs/jszip/jszip.min.js"></script>
+<script src="assets/libs/pdfmake/build/pdfmake.min.js"></script>
+<script src="assets/libs/pdfmake/build/vfs_fonts.js"></script>
+<script src="assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="assets/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+
+<!-- Responsive examples -->
+<script src="assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+<!-- Datatable init js -->
+<script src="assets/js/pages/datatables.init.js"></script>
+        <!-- App js -->
+        <script src="assets/js/app.js"></script>
+
+</body>
+
+</html>

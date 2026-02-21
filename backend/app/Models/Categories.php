@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Categories extends Model
+{
+    use HasFactory;
+    public $timestamps = false;
+
+    protected $fillable=[
+        'id',
+        'type',
+        'description',
+        'name',
+    ];
+    protected $cast=[
+        'id'=>'integer',
+        'type'=>'string',
+        'description'=>'string',
+        'name'=>'string',
+    ];
+}

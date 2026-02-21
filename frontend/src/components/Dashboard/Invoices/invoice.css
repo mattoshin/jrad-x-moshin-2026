@@ -1,0 +1,15 @@
+
+.invoice {
+    border-radius: 6px;
+    background-color: #1E222B;
+    height: fit-content;
+    display: flex;
+    align-content: center;
+    padding: 18px 0px;
+}
+
+.invoice:hover{ 
+    cursor: pointer;
+    transition: 0.2s linear;
+    transform: scale(1.02);
+}

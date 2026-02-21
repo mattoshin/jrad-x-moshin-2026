@@ -1,0 +1,16 @@
+
+.invoice {
+    border-radius: 0 !important;
+    border-bottom: 1px solid #1E222B;
+    height: fit-content;
+    display: flex;
+    align-content: center;
+    padding: 8px 0px;
+}
+
+.invoice:hover{ 
+    cursor: pointer;
+    transition: 0.2s linear;
+    transform: scale(1.02);
+}
+

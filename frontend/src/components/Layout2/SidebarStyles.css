@@ -1,0 +1,363 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+@import "https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,500,600,700";
+
+a,
+a:hover,
+a:focus {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+/* ---------------------------------------------------
+      SIDEBAR STYLE
+  ----------------------------------------------------- */
+.sidebar {
+  position: fixed !important;
+  min-width: 250px;
+  max-width: 250px;
+  color: #adb5bd;
+  /* margin-left: -250px; */
+  left: 0;
+  top: 0;
+  bottom: 0;
+  height: 100% !important;
+  transition: all 0.5s;
+  overflow: auto;
+  background: #1E222B !important;
+}
+
+.main-content-div {
+  border: 1px solid white !important;
+  width: 20% !important;
+}
+
+.sidebar.is-open {
+  margin-left: 0;
+  transition: 0.5s;
+  background-color: #1a1c2a;
+}
+
+.adminBlue {
+  color: #00878C;
+  font-weight: bold;
+}
+.sidebar-header {
+  text-align: center;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  margin: auto;
+  margin-top: 35px;
+  margin-bottom: 7px;
+}
+
+.sidebar-header img {
+  margin: auto;
+  margin-bottom: 30px;
+}
+
+.sidebar-header h3 {
+  color: #fff;
+  padding: 1em;
+}
+
+.sidebar ul p {
+  color: #fff;
+  padding: 10px;
+}
+
+.collapse.show,
+.collapsing {
+  background: #313b4c;
+}
+#responsive-navbar-nav {
+  width: 100%;
+}
+.navbar {
+  width: 100%;
+  background-color: #1E222B;
+}
+
+.navbar .headerSub {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.toggle-button {
+  display: none;
+  background-color: transparent;
+}
+
+.nav-item {
+  /*color: #ced4da;*/
+  color: #808080;
+  margin-bottom: 30px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 18px;
+  border-radius: 5px;
+  align-items: center;
+  text-align: center;
+}
+
+.nav-item .nav-icon {
+  margin: auto;
+  color: #888888;
+  border-radius: 5px;
+  width: 65px;
+  height: 65px;
+  padding: 20px;
+  background: #2F3540;
+}
+.nav-item .nav-icons {
+  margin: auto;
+  background-color: #00878C;
+  border-radius: 5px;
+  width: 65px;
+  height: 65px;
+  padding: 20px;
+  color: #e9ecef;
+}
+
+.nav-item .nav-icon svg {
+  width: 24px;
+  height: 24px;
+}
+.nav-item .nav-icons svg {
+  width: 24px;
+  height: 24px;
+}
+
+.nav-item #navbar-text {
+  color: #808080;
+  margin-top: 8px;
+  font-family: "Poppins";
+  font-style: light;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  border-radius: 5px;
+}
+
+.nav-item.open {
+  color: #e9ecef;
+}
+
+.nav-item.active {
+  color: #e9ecef;
+}
+.nav-item.active .nav-icon {
+  color: #0f8cff;
+}
+.nav-item.active #nav-text {
+  color: #fff;
+}
+.nav-item:hover {
+  color: #fff;
+  transition: 0.2s;
+}
+
+.nav-item .svg-inline--fa {
+  color: inherit;
+}
+
+li a.dropdown-toggle::after {
+  display: inline-flex;
+  position: relative;
+  left: 60%;
+  top: 10%;
+}
+
+.sidebar-header > button {
+  position: relative;
+  float: right;
+  /* margin: 0.5em; */
+  font-size: 2rem;
+  cursor: pointer;
+  display: none;
+}
+/* .form-switch  {
+    margin-top: 14px;
+    margin-right: 40%;
+    float: right;
+    --width: 60px;
+    --height: calc(var(--width) / 2);
+    --border-radius: calc(var(--height) / 2);
+  
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  
+  .form-switch .form-check-input {
+    position: relative;
+    width: var(--width);
+    height: var(--height);
+    border-radius: var(--border-radius);
+    background: #212331;
+    transition: background 0.2s;
+  }
+   */
+.toggle__input:checked ~ .toggle__fill {
+  background: #243e63;
+}
+
+.toggle__fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: var(--height);
+  width: var(--height);
+  background: #0f8cff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  border-radius: var(--border-radius);
+  transition: transform 0.2s;
+}
+
+.toggle__input:checked ~ .toggle__fill::after {
+  transform: translateX(var(--height));
+}
+
+/* ---------------------------------------------------
+      CONTENT STYLE
+  ----------------------------------------------------- */
+.content {
+  padding: 20px;
+  margin-left: 0;
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  padding-bottom: 0px;
+}
+.content::-webkit-scrollbar {
+  /* WebKit */
+  width: 0;
+  height: 0;
+}
+.content.is-open {
+  padding: 20px;
+  padding-bottom: 0px;
+  margin-left: 250px;
+}
+
+.toggle-button {
+  display: none;
+  background-color: transparent;
+}
+
+.nav-link {
+  width: fit-content;
+  margin: auto;
+}
+
+.nav-link:hover > .nav-icon {
+  background: #4a4c5d;
+}
+
+@media screen and (max-width: 960px) {
+  .nav-item {
+    display: flex;
+  }
+
+  .nav-icons {
+    display: block;
+    position: relative;
+  }
+  .nav-icon {
+    display: block;
+    position: relative;
+    transform: none;
+  }
+}
+
+@media only screen and (max-width: 856.98px) {
+  .toggle {
+    margin-top: 14px;
+    margin-right: 15%;
+    float: right;
+    --width: 45px;
+    --height: calc(var(--width) / 2);
+    --border-radius: calc(var(--height) / 2);
+
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .toggle-button {
+    display: initial;
+  }
+  .content.is-open {
+    /*margin-left: 100%;*/
+    display: none;
+    transition: all 0.5s;
+  }
+
+  .sidebar.is-open {
+    min-width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    z-index: 100;
+    transition: all 0.5s, height 0s;
+    height: 100vh !important;
+  }
+
+  .sidebar.is-open > .sidebar-header button {
+    display: block;
+  }
+
+  li a.dropdown-toggle::after {
+    display: inline-block;
+    position: relative;
+    left: 68%;
+  }
+  .nav-icon {
+    display: none;
+  }
+
+  .nav-item {
+    display: flex;
+  }
+
+  .nav-icons {
+    display: block;
+    position: relative;
+  }
+  .nav-icon {
+    display: block;
+    position: relative;
+    transform: none;
+  }
+  .sidebar {
+    margin-left: -200px;
+  }
+  .sidebar-header > button,
+  .sidebar-header:focus {
+    display: block !important;
+    box-shadow: none !important;
+  }
+
+  .sidebar-header h3 {
+    margin-left: 13px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .nav-item {
+    display: flex;
+  }
+
+  .nav-icons {
+    display: block;
+    position: relative;
+  }
+  .nav-icon {
+    display: block;
+    position: relative;
+    transform: none;
+  }
+}

@@ -1,0 +1,140 @@
+import discord
+import asyncio
+import json
+import requests
+from dhooks import Webhook, Embed
+import re
+
+controlcat = "961200358414254121"
+
+class API():
+    async def __init__(self):
+        self.baseurl = "https://mocean.info"
+
+    def checkChannel(channel):
+        r = requests.get("https://admin.mocean.info/api/bot/channels/control/%s" % (channel))
+        if(str(channel) not in r.text):
+            return False
+        else:
+            try:
+                if r.json()["id"] == channel:
+                    return r.json()
+                else:
+                    return False
+            except ValueError:
+                return False
+
+
+    def checkControlCategory(category):
+        r = requests.get("https://admin.mocean.info/api/bot/categories/control/%s" % (category))
+        if(str(category) not in r.text):
+            return False
+        else:
+            return r.json()
+
+
+class MyClient(discord.Client):
+    async def on_ready(self):
+        print('Logged on as', self.user)
+
+    async def on_message(self, message):
+        # don't respond to ourselves
+        if message.author == self.user:
+            return
+
+
+        checkChannelResponse = API.checkChannel(message.channel.id)
+        if checkChannelResponse == False:
+            return
+        if checkChannelResponse["channel_type"] != "2":
+            return
+
+
+        
+        webhooks = checkChannelResponse["webhooks"]
+        if(webhooks):
+            if (len(webhooks) >= 1):
+                for webhook in webhooks:
+                    try:
+                        if (webhook["color"] is None):
+                            hexstring = 0xffffff
+                        else:
+                            hexstring = int(webhook["color"].replace("#", ""), 16)
+                        if (webhook["color"] is None):
+                            planName = "Mocean Services"
+                        else:
+                            planName = webhook["name"
+                        if (webhook["picture"] is None):
+                            avatarurl = "https://media.discordapp.net/attachments/951699541030232084/965425627832406036/ocean1.png"
+                        else:
+                            avatarurl = webhook["picture"]
+                        print('test')
+                        url = webhook.get("webhook_url")
+                        # print(url)
+
+                        if ("discordapp.com" in url):
+                            url = url.replace("discordapp.com", "discord.com")
+                        hook = Webhook(url)
+                        if (message.embeds):
+                            if(message.embeds[0].title):
+
+                                if(message.embeds[0].url):
+                                    embed = Embed(
+                                        title=message.embeds[0].title,
+                                        description=message.embeds[0].description,
+                                        url=message.embeds[0].url,
+                                        color=hexstring
+                                    )
+                                else:
+                                    embed = Embed(
+                                        title=message.embeds[0].title,
+                                        description=message.embeds[0].description,
+                                        color=hexstring
+                                    )
+                            else:
+                                embed = Embed(
+                                    title=message.embeds[0].title,
+                                    description=message.embeds[0].description,
+                                    color=hexstring
+                                )
+
+
+                            if(message.embeds[0].thumbnail.url):
+                                embed.set_thumbnail(message.embeds[0].thumbnail.url)
+                                # print(message.embeds[0].thumbnail)
+
+                            if(message.embeds[0].image.url):
+                                embed.set_image(message.embeds[0].image.url)
+                            if(message.embeds[0].fields):
+                                for field in message.embeds[0].fields:
+                                    embed.add_field(name=field.name, value=field.value, inline=False)
+                            embed.set_footer(text='https://mocean.info')
+                            hook.send(embed=embed, username=planName, avatar_url=avatarurl)
+
+                        else:
+                            embed = Embed(
+                                description=message.content,
+                                color=hexstring
+                            )
+                            embed.set_footer(text='Powered by https://mocean.info')
+
+                            hook.send(embed=embed, username=planName, avatar_url=avatarurl)
+                    except Exception as e:
+                        print("Exception: {}".format(type(e).__name__))
+                        print("Exception message: {}".format(e))
+
+        # settings = await API.getPlans()
+        # print(settings)
+
+        # if webhooks:
+        #     print(webhooks)
+
+
+
+
+
+intents = discord.Intents.default()
+intents.message_content = True
+client = MyClient(intents=intents)
+import os
+client.run(os.getenv('DISCORD_BOT_TOKEN'))

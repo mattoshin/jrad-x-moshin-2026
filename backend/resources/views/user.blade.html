@@ -1,0 +1,264 @@
+
+
+    <div class="se-pre-con"></div>
+<script src="{{asset('assets/css/app-dark.min.css')}}" defer></script>
+<script src="{{asset('assets/css/icons.min.css')}}" defer></script>
+<script src="{{asset('assets/css/bootstrap-dark.min.css')}}" defer></script>
+
+<!-- Required datatable js -->
+<script src="{{asset('js/libs/datatables.net/js/jquery.dataTables.min.js')}}" defer></script>
+<script src="{{asset('js/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}" defer></script>
+<!-- Buttons examples -->
+<script src="{{asset('js/libs/datatables.net-buttons/js/dataTables.buttons.min.js')}}" defer></script>
+<script src="{{asset('js/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js')}}" defer></script>
+<script src="{{asset('js/libs/jszip/jszip.min.js')}}" defer></script>
+<script src="{{asset('js/libs/pdfmake/build/pdfmake.min.js')}}" defer></script>
+<script src="{{asset('js/libs/pdfmake/build/vfs_fonts.js')}}" defer></script>
+<script src="{{asset('js/libs/datatables.net-buttons/js/buttons.html5.min.js')}}" defer></script>
+<script src="{{asset('js/libs/datatables.net-buttons/js/buttons.print.min.js')}}" defer></script>
+<script src="{{asset('js/libs/datatables.net-buttons/js/buttons.colVis.min.js')}}" defer></script>
+
+<!-- Responsive examples -->
+<script src="{{asset('js/libs/datatables.net-responsive/js/dataTables.responsive.min.js')}}" defer></script>
+<script src="{{asset('js/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}" defer></script>
+
+<!-- Datatable init js -->
+<script src="{{asset('js/pages/datatables.init.js')}}"defer></script>
+
+<script src="{{asset('js/app.js')}}" defer></script>
+
+<!-- Begin page -->
+<div id="layout-wrapper">
+
+    @extends("partials/menu")
+
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="main-content">
+
+        <div class="page-content">
+            <div class="container-fluid">
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                            <h4 class="mb-sm-0 font-size-18">User {{$user->username}}</h4>
+
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="/admin/users">Users</a></li>
+                                    <li class="breadcrumb-item active">{{$user->username}}</li>
+                                </ol>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div class="row">
+                    <div class="col-xl-4">
+
+                        <!-- end card -->
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title mb-4">Personal Information</h4>
+
+                                <div class="table-responsive">
+                                    <table class="table table-nowrap mb-0">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Discord Name :</th>
+                                                <td>{{$user->username}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Company Name</th>
+                                                <td>{{$business->name}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Company Email</th>
+                                                <td>{{$business->email}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Company Twitter</th>
+                                                <td>{{$business->twitter}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Discord Email :</th>
+                                                <td>{{$user->email}}</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end card -->
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title mb-5">User Servers</h4>
+                                <div class="">
+                                    <ul class="verti-timeline list-unstyled">
+                                        
+                                        @foreach ($servers as $item)
+                                        <li class="event-list">
+                                            <div class="event-timeline-dot">
+                                                <i class="bx bx-right-arrow-circle"></i>
+                                            </div>
+                                            <div class="d-flex">
+                                                <div class="flex-shrink-0 me-3">
+                                                    <i class="bx bx-server h4 text-primary"></i>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <div>
+                                                        <h5 class="font-size-15"><a href="javascript: void(0);" class="text-dark">{{$item->name}}</a></h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        
+                                        @endforeach
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- end card -->
+                    </div>
+
+                    <div class="col-xl-8">
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card mini-stats-wid">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div class="flex-grow-1">
+                                                <p class="text-muted fw-medium mb-2">Messages Sent</p>
+                                                <h4 class="mb-0">null</h4>
+                                            </div>
+
+                                            <div class="flex-shrink-0 align-self-center">
+                                                <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
+                                                    <span class="avatar-title">
+                                                        <i class="bx bx-check-circle font-size-24"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card mini-stats-wid">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div class="flex-grow-1">
+                                                <p class="text-muted fw-medium mb-2">Active Monitors</p>
+                                                <h4 class="mb-0">
+                                                @php
+                                                    echo count($products);
+                                                @endphp
+                                                </h4>
+                                            </div>
+
+                                            <div class="flex-shrink-0 align-self-center">
+                                                <div class="avatar-sm mini-stat-icon rounded-circle bg-primary">
+                                                    <span class="avatar-title">
+                                                        <i class="bx bx-package font-size-24"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card mini-stats-wid">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div class="flex-grow-1">
+                                                <p class="text-muted fw-medium mb-2">Total Revenue</p>
+                                                <h4 class="mb-0">NULL</h4>
+                                            </div>
+
+                                            <div class="flex-shrink-0 align-self-center">
+                                                <div class="avatar-sm mini-stat-icon rounded-circle bg-primary">
+                                                    <span class="avatar-title">
+                                                        <i class="bx bx-hourglass font-size-24"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title mb-4">Active Monitors</h4>
+                                <div class="table-responsive">
+                                    
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+
+
+        @extends("partials/footer")
+    </div>
+    <!-- end main content-->
+
+</div>
+<!-- END layout-wrapper -->
+
+@extends("partials/right-sidebar")
+
+
+</body>
+
+</html>
+
+
+
+
+
+<div class="se-pre-con"></div>
+<script src="{{asset('assets/css/app-dark.min.css')}}" defer></script>
+<script src="{{asset('assets/css/icons.min.css')}}" defer></script>
+<script src="{{asset('assets/css/bootstrap-dark.min.css')}}" defer></script>
+
+<!-- Required datatable js -->
+<script src="{{asset('js/libs/datatables.net/js/jquery.dataTables.min.js')}}" defer></script>
+<script src="{{asset('js/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}" defer></script>
+<!-- Buttons examples -->
+<script src="{{asset('js/libs/datatables.net-buttons/js/dataTables.buttons.min.js')}}" defer></script>
+<script src="{{asset('js/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js')}}" defer></script>
+<script src="{{asset('js/libs/jszip/jszip.min.js')}}" defer></script>
+<script src="{{asset('js/libs/pdfmake/build/pdfmake.min.js')}}" defer></script>
+<script src="{{asset('js/libs/pdfmake/build/vfs_fonts.js')}}" defer></script>
+<script src="{{asset('js/libs/datatables.net-buttons/js/buttons.html5.min.js')}}" defer></script>
+<script src="{{asset('js/libs/datatables.net-buttons/js/buttons.print.min.js')}}" defer></script>
+<script src="{{asset('js/libs/datatables.net-buttons/js/buttons.colVis.min.js')}}" defer></script>
+
+<!-- Responsive examples -->
+<script src="{{asset('js/libs/datatables.net-responsive/js/dataTables.responsive.min.js')}}" defer></script>
+<script src="{{asset('js/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}" defer></script>
+
+<!-- Datatable init js -->
+<script src="{{asset('js/pages/datatables.init.js')}}"defer></script>
+
+<script src="{{asset('js/app.js')}}" defer></script>

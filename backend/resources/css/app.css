@@ -1,0 +1,658 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap);
+html{
+    height:100%;
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #222433;
+    margin: 0;
+    padding: 0;
+  }
+  #application{
+    background-color: #222433;
+    width: 100vw;
+    height:100%;
+    display: flex;
+  }
+
+  #navbar{
+    background-color:#1A1C29;
+
+    width: 310px;
+    height: 100vh;
+    justify-content:center;
+    text-align: center;
+  }
+  #linksBox{
+    display: inline-block;
+    justify-content:center;
+    text-align: center;
+    margin-top: 30px;
+
+  }
+  #linksBox a {
+    text-decoration: none;
+  }
+  #home{
+    color: #808080;
+    top:3.3203%;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    border-radius: 5px;
+
+  }
+  #homeIcon{
+    color: #73C6A3;
+    border-radius: 5px;
+    width:70px;
+    padding: 15%;
+    background:  #292A3C;
+  }
+  #navbar-text{
+    text-align: center;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    margin-top: 5px;
+    line-height: 183%;
+    color: #808080;
+
+  }
+
+  #cog{
+    color: #808080;
+    top:3.3203%;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    border-radius: 5px;
+
+  }
+  #cogIcon{
+    color: #FDAE60;
+    width:70px;
+    padding: 15%;
+    background:  #292A3C;
+    border-radius: 5px;
+  }
+  .text-home {
+    margin-top: 20px;
+  }
+  .main-nav{
+    color: #808080;
+    top:3.3203%;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    border-radius: 5px;
+
+  }
+  
+
+  #pieChart{
+    color: #808080;
+    top:3.3203%;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    border-radius: 5px;
+
+  }
+  #pieIcon{
+    color: #0F8CFF;
+    border-radius: 5px;
+    width:70px;
+    padding: 15%;
+    background:  #292A3C;
+  }
+  #navbar-text-2{
+    text-align: center;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 95%;
+    line-height: 183%;
+    color: #808080;
+  }
+  #filterIcon{
+    padding: 4px;
+  }
+
+
+
+  #profilePicture{
+    top:2.9296%;
+    width: 3em;
+    height: 3em;
+    border-radius: 4px;
+  }
+  #profileLink {
+    font-family: Poppins;
+    font-style: bold;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 19px;
+    align-items: right;
+    text-decoration: none;
+    margin-left: auto;
+    margin-right: 0;
+    color: #FFFFFF;
+  }
+  #logoutLink{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    margin-left: auto;
+    margin-right: 0;
+    float:right;
+    text-decoration: none;
+    color: #FF3062;
+  }
+  #profileSection {
+    margin-top: 5px;
+    align-items: right;
+  }
+  #notificationBar{
+    display: flex;
+    justify-content: space-between;
+    width:160px;
+    margin-top: 24px;
+    margin-right: 5px;
+  }
+  #managedMonitor{
+    margin-right: 30px;
+
+  }
+  #bodycontainer {
+    margin-left: 30px;
+    margin-right: 30px;
+    width: 100%;
+  }
+  #routes {
+  }
+  #monitorSetting{
+    height: 346px;
+    width: 100% !important;
+    margin-top: 30px;
+    border-radius: 5px;
+    background-color: #292A3C;
+  }
+  #accountSettings{
+    height: 406px;
+    border-radius: 5px;
+    background-color: #292A3C;
+  }
+  #inputBoxCompany{
+    background-color: #292A3C;
+    border-radius: 5px;
+    width:100%;
+
+  }
+  #inputBox {
+    padding: 5px 8px;
+  }
+  #announcements{
+    width: 100%;
+    height: 346px;
+    border-radius: 5px;
+    margin-top: 30px;
+    background-color: #292A3C;
+  }
+  #announcmentsHeader{
+    display: flex;
+  }
+  #announcementContainer {
+    padding: 10px;
+  }
+  #announcementsTable{
+    display: flex;
+    width: 96%;
+    height: 100%;
+    background: #37384A;
+    border-radius: 5px;
+    margin-bottom:4.3352%;
+    margin: 10px;
+  }
+  #announcementsTitle{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 100%;
+    border-bottom:1px solid #37384A;
+    padding:20px;
+  }
+  #appointmentDesc{
+  width:100%;
+  font-family: 'Poppins';
+  font-style: light;
+  font-weight: 300;
+  font-size: 14px;
+  padding: 10px;
+  color: #FFFFFF;
+  }
+  
+  #saveSettingsMonitor{
+    background: #0F8CFF;
+    border-radius:5px;
+    border: none;
+    width: 24.3283%;
+    height: 14.4508%;
+    left:72.6865%;
+    top:79.7687%;
+  }
+  #line{
+    width:-moz-fit-content;
+    width:fit-content;
+
+  }
+  #inboxIcon{
+    font-weight: 100;
+    stroke-width: 1px;
+    border: 1px solid #383D51;
+    border-radius: 100%;
+    padding:10px;
+  }
+  #bellIcon{
+    font-weight: 100;
+    stroke-width: 1px;
+    border: 1px solid #383D51;
+    border-radius: 100%;
+    padding:10px;
+
+  }
+  #logo{
+  text-align: center;
+  width:45.7142%;
+  top:3.4179%;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 200%;
+  margin: auto;
+  margin-top: 35px;
+  margin-bottom: 7px;
+  }
+  #manageMonitorSettingsInput{
+    display: grid ;
+    grid-template-columns: 66% 22.3880%;
+    grid-template-rows: 3fr;
+    margin-bottom: 2.8901% ;
+    padding-left: 2.9850%;
+    grid-area:
+    'c' 'c' 'h'
+    'l'
+    ' ' ' ' 's';
+  }
+
+  #monitorSettings{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 100%;
+    border-bottom:1px solid #37384A;
+    padding:20px;
+  }
+  #monitorsHeader{
+    border-bottom:1px solid #37384A;
+    display: flex;
+    width: 100%;
+    justify-content: between;
+  }
+  #monitorsHeaderText{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 100%;
+    padding:20px;
+    padding-bottom: 10px !important;
+    color: #fff;
+  }
+  .form-switch {
+    margin-left: 24px;
+  }
+  #saveButton {
+    font-family: 'Poppins';
+    font-style: lighter;
+    font-weight: 400;
+    font-size: 12px;
+    box-shadow: 0px 20px 40px rgba(15, 140, 255, 0.14);
+    background: #0F8CFF;
+    color: #FFFFFF;
+    border-radius: 5px;
+    border: none;
+    padding: 2px;
+    height: 30px;
+    width: 124px;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: 30px;
+  }
+  .monitorForm {
+    padding: 20px;
+  }
+  #greeting{
+    display: inline;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 120%;
+  }
+  #greetingContainer{
+    margin-top: 24px;
+    display: flex;
+
+  }
+  #calender{
+    width: 3.7em;
+    margin-top: 10px;
+    margin-left: 10px;
+    align-content: center;
+  }
+  #date-time {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  #inputBox{
+    background-color: #292A3C;
+    border-radius: 5px;
+
+
+  }
+
+
+  #inputBoxCompany{
+    width:100%;
+  }
+  #inputBoxCompany input{
+    width:100%;
+    background: #37384A;
+    border: none;
+    border-radius: 5px;
+
+  }
+  #inputBoxAccount{
+    width:100%;
+    margin-bottom: 10px;
+  }
+  #inputBoxAccount input{
+    width:100%;
+    background: #37384A;
+    border: none;
+    border-radius: 5px;
+
+  }
+  #inputBoxHex input{
+    background: #37384A;
+    border-radius: 5px;
+    width:100%;
+    border: none;
+
+  }
+  #inputBoxUrl{
+    width: 100%;
+  }
+  #inputBoxUrl input{
+    background: #37384A;
+    border-radius: 5px;
+    width:100%;
+    border: none;
+  }
+  
+  #monitorsPanel{
+    width:100%;
+    height: 440px;
+    border-radius: 5px;
+    background-color:  #292A3C;
+    margin-top: 30px;
+    overflow-y: scroll;
+  }
+  #monitorsPanel table{
+    width: 100%;
+    height: 100%;
+  }
+  #monitorsTableHead th{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    padding: 0px 20px 0px 20px;
+  }
+  #monitorName{
+    padding-right: 2%;
+    padding-left: 20px;
+    width: 15%;
+    height: 30px;
+  }
+  .monitor-top {
+    
+    border-bottom:1px solid #37384A;
+  }
+  .monitor-text {
+    
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 100%;
+    color: #FFFFFF;
+    padding:20px;
+  }
+  .switch-container {
+    margin-top: 14px;
+  }
+  .table-button {
+    font-family: 'Poppins';
+    font-style: lighter;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 21px;
+    background: #0F8CFF;
+    color: #FFFFFF;
+    box-shadow: 0px 20px 40px rgba(15, 140, 255, 0.14);
+    border-radius: 5px;
+    border: none;
+    height: 24px;
+    width: 80px;
+    padding: 2px;
+    /* margin-top: 12px; */
+  }
+  #enableth {
+    margin-left: auto;
+  }
+  /* #webhookContainer{
+    border: none;
+    background-color: #37384A;
+    border-radius: 5px;
+    height: 50px;
+    width:100%;
+    white-space: nowrap;
+  } */
+
+
+  #webhookContainer{
+    margin-left: 20px;
+    width: 90%;
+  }
+  #webhookContainer form {
+    width: 100%;
+  }
+  #webhookContainer input{
+    background: #37384A;
+    border-radius: 5px;
+    width:100%;
+    border: none;
+  }
+  #linkIcon{
+    top:25%;
+    width: 16px;
+    height: 16px;
+  }
+
+
+
+  #SubmitButtonMonitorSettings{
+    background: #0F8CFF;
+    box-shadow: 0px 20px 40px rgba(15, 140, 255, 0.14);
+    border-radius: 5px;
+    border: none;
+    left:5%;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-top: 15px;
+    padding-bottom: 14px;
+    margin-top: 20px;
+    float: right;
+  }
+  #switchContainerTable{
+    height: 50px;
+    width: 10%;
+    white-space: nowrap;
+    top:25%;
+    border: none;
+  }
+
+
+
+@media only screen and (max-width: 768px){
+  html {
+    width: 96vw;
+    background-color: #222433;
+  }
+  #application{
+    background-color: #222433;
+    width: 100vw;
+    height:100%;
+    display: initial;
+  }
+
+  #logo{
+    text-align: left;
+    width: 100px;
+    top:3.4179%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 200%;
+    margin-top: 0;
+    margin-left: 20px;
+    margin-right: auto;
+    padding-top: 4px;
+    margin-bottom: 7px;
+    }
+  #headerSub{
+
+  }
+  #bodycontainer {
+    background-color: #222433;
+    margin-left: 0;
+    padding-left: 20px;
+    margin-right: 0;
+    width: 100%;
+  }
+  #navbar{
+    background-color:#1A1C29;
+
+    width: 100vw;
+    height: 80px;
+    display: flex;
+    justify-content:center;
+    text-align: center;
+    margin: auto;
+    padding-top: 10px;
+    top:3.4179%;
+  }
+  #linksBox{
+    display: flex;
+    width: 90px;
+    justify-content:space-between;
+    text-align: center;
+    margin-top: 0px !important;
+    float: right;
+    margin-right: 20px;
+
+  }
+  #linksBox a {
+    text-decoration: none;
+  }
+  .text-home {
+    margin-top: 10px;
+  }
+  .main-nav{
+    color: #808080;
+    top:3.3203%;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 18px;
+    border-radius: 5px;
+
+  }
+  .main-nav p{
+    display: none;
+
+  }
+  .main-nav .nav-text{
+    color: #0F8CFF;
+    border-radius: 5px;
+    width:40px;
+    padding: 10%;
+    background:  #292A3C;
+  }
+
+  .main-nav-active {
+    color: #FFFFFF;
+    top:3.3203%;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    border-radius: 5px;
+  }
+  .main-nav-active .nav-text{
+    width:40px;
+    padding: 10%;
+    background:#0F8CFF;
+    border-radius: 5px;
+  }
+  .main-nav-active .navbar-text {
+    display: none;
+  }
+  #greeting{ 
+    display: none;
+  }
+}
+
+  
+@media only screen and (min-width: 768px) and (max-width: 1000px)
+{
+  #greeting{
+    display: inline;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 120%;
+  }
+
+}
+@media only screen and (min-width: 1000px) and (max-width: 1280px) {
+
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1700px) {
+
+}
+@media only screen and (min-width: 1700px) and (max-width: 1850px) {
+
+}

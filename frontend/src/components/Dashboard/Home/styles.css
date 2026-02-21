@@ -1,0 +1,453 @@
+::-webkit-scrollbar {
+  width: 0;  
+  background: transparent;  
+}
+
+/* Import the downloaded font */
+@font-face {
+  font-family: "ocr extended";
+  src: url(../../../assets/fonts/OCR\ A\ Extended\ Regular.ttf);
+}
+
+.main-content-wrapper {
+  margin: 0 35px;
+}
+
+.action-col > h6,
+.status-col > h6 {
+  margin-right: 5px;
+  text-align: center;
+}
+.progress-col {
+  text-align: center;
+}
+.product-col > h6 {
+  margin-left: 11px;
+}
+.main-cards-wrapper {
+  height: 400px;
+}
+.main-card {
+  border-radius: 10px;
+  background-color: #1e222b;
+  border: 1px solid rgba(46, 50, 59, 0.5);
+  height: 100%;
+}
+.main-wrapper-up {
+  height: 16%;
+  border-bottom: 1px solid #2e323b;
+}
+.main-wrapper-up h5 {
+  margin-left: 20px;
+  font-weight: 600;
+}
+.main-wrapper-down {
+  height: 80%;
+  overflow: auto;
+}
+.background-blur {
+  /* backdrop-filter: blur(8px);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 111; */
+}
+.cancel-popup {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border-radius: 15px;
+  width: 300px;
+  background-color: #1e222b;
+  height: fit-content;
+  padding: 20px;
+  border: 1px solid #333;
+  box-shadow: 0 26px 26px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.add-product {
+  color: #00878C;
+  border: 1px solid #00878C;
+  padding: 10px 32px;
+  border-radius: 8px;
+}
+
+.add-product:hover{
+  color: #00878C;
+  cursor: pointer;
+}
+
+.popup-icon {
+  color: #00878C;
+  background-color: transparent;
+  border: none;
+  margin-left: 8px;
+}
+
+.popup-ui {
+  color: white;
+  margin-left: 8px;
+  border-radius: 8px;
+  padding: 4px 8px;
+  background-color: #1e222b;
+  border: 1px solid #333;
+  box-shadow: 0 26px 26px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.popup-arrow {
+  display: none;
+}
+
+.cancel-popup p {
+  color: white;
+}
+
+.cancel-popup .cancel-button{
+
+}
+
+.account-cards-wrapper {
+  height: 100%;
+}
+.account-card {
+  border-radius: 10px;
+  background-color: #1e222b;
+  border: 1px solid rgba(46, 50, 59, 0.5);
+  height: 100%;
+}
+.account-wrapper-up {
+  height: 60px;
+  border-bottom: 1px solid #2e323b;
+}
+.account-wrapper-up h5 {
+  margin-left: 20px;
+  font-weight: 600;
+}
+.account-wrapper-down {
+  height: 80%;
+  overflow: auto;
+}
+.announcements-down {
+  height: 282px;
+}
+
+.secondary-wrapper-up {
+  height: 20%;
+  border-bottom: 2px solid #2e323b;
+}
+
+.active-sub-card-progress {
+  border-radius: 25px;
+  height: 10px;
+  width: 50%;
+  background-color: #2b313c;
+}
+
+.active-sub-card-progress-right {
+  width: 25%;
+  border-radius: 25px;
+  background-color: #00878c;
+}
+
+.cards-holder-active {
+  height: 66%;
+  padding: 0 25px;
+  overflow: auto;
+}
+
+.active-sub-button {
+  border: 0;
+  border-radius: 6px;
+  width: 100px;
+  height: 55%;
+  background-color: #1e222b;
+  font-size: 14px;
+  color: #2ea704;
+  font-weight: 650;
+}
+
+
+.invoice-status {
+  border: 0;
+  border-radius: 6px;
+  background-color: transparent;
+  font-size: 14px;
+  color: #2ea704;
+  font-weight: 650;
+}
+
+.invoice-button {
+  border-radius: 6px;
+  width: 100px;
+  height: 55%;
+  background-color: transparent;
+  border: 1px solid rgb(0, 135, 140, 0.8);
+  font-size: 14px;
+  color: #2ea704;
+  font-weight: 650;
+}
+
+.monitor-settings-input {
+  background-color: rgba(23, 26, 35, 0.5) !important;
+  border: 0 !important;
+  outline: none !important;
+  color: #acacac !important;
+  height: 50px;
+  box-shadow: none !important;
+}
+
+.account-settings-input {
+  background-color: rgba(23, 26, 35, 0.5) !important;
+  border: 0 !important;
+  outline: none !important;
+  color: #acacac !important;
+  height: 50%;
+  box-shadow: none !important;
+}
+.dashed-border {
+  border-style: dashed !important;
+}
+.hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.active-product-sub {
+  border-radius: 6px;
+  height: 60px;
+  background-color: rgba(24, 27, 36, 0.8);
+}
+
+.card {
+  width: 420px;
+  height: 240px;
+  position: relative;
+  background: radial-gradient(
+    140% 140% at 0% 0%,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  border-top: 1px solid #eeeded70;
+  border-left: 1px solid #eeeded70;
+  border-radius: 30px;
+  backdrop-filter: blur(30px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.logo {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.chip {
+  width: 50px;
+  position: absolute;
+  top: 90px;
+  left: 30px;
+}
+
+.number {
+  color: #ffffff;
+  font-size: 30px;
+  font-family: "ocr extended";
+  font-weight: 400;
+  position: absolute;
+  bottom: 60px;
+  left: 30px;
+}
+
+.card-holder {
+  color: #ffffff;
+  font-size: 12px;
+  font-family: cursive;
+  font-weight: 700;
+  position: absolute;
+  bottom: 18px;
+  left: 30px;
+  text-transform: uppercase;
+}
+
+.card-holder span {
+  font-size: 10px;
+  font-family: "Mulish", sans-serif;
+  font-weight: 400;
+}
+
+.valid {
+  color: #ffffff;
+  font-size: 16px;
+  font-family: "ocr extended";
+  font-weight: 400;
+  position: absolute;
+  bottom: 10px;
+  left: 160px;
+  text-transform: uppercase;
+}
+
+.valid span {
+  font-size: 10px;
+  font-family: "Mulish", sans-serif;
+  font-weight: 400;
+}
+
+.active-product-sub:hover {
+  cursor: pointer;
+  transition: 0.2s linear;
+  transform: scale(1.01);
+}
+
+.invoice-sub {
+  border-radius: 6px;
+  background-color: rgba(24, 27, 36, 0.8);
+  height: fit-content;
+  display: flex;
+  align-content: center;
+  padding: 14px 0px;
+}
+
+.invoice-sub:hover {
+  cursor: pointer;
+  transition: 0.2s linear;
+  transform: scale(1.01);
+}
+
+
+.product-name {
+  padding-left: 10px;
+}
+@media only screen and (max-width: 1800px) {  
+  .card {
+    width: 360px;
+    height: 210px;
+  }
+    
+  .logo {
+    display: none;
+  }
+
+  .chip {
+    width: 40px;
+    height: 25px;
+    top: 80px;
+    left: 30px;
+  }
+
+  .number {
+    font-size: 22px;
+    bottom: 60px;
+    left: 30px;
+  }
+
+  .card-holder {
+    font-size: 12px;
+    bottom: 18px;
+    left: 30px;
+  }
+
+  .card-holder span {
+    font-size: 10px;
+  }
+
+  .valid {
+    font-size: 16px;
+    bottom: 10px;
+    left: 160px;
+  }
+
+  .valid span {
+    font-size: 10px;
+  }
+
+}
+
+@media only screen and (max-width: 1600px) {  
+  .card {
+    width: 280px;
+    height: 180px;
+  }
+    
+  .logo {
+    display: none;
+  }
+
+  .chip {
+    width: 30px;
+    height: 20px;
+    top: 60px;
+    left: 30px;
+  }
+
+  .number {
+    font-size: 18px;
+    bottom: 60px;
+    left: 30px;
+  }
+
+  .card-holder {
+    font-size: 12px;
+    bottom: 18px;
+    left: 30px;
+  }
+
+  .card-holder span {
+    font-size: 10px;
+  }
+
+  .valid {
+    font-size: 16px;
+    bottom: 10px;
+    left: 160px;
+  }
+
+  .valid span {
+    font-size: 10px;
+  }
+
+}
+
+
+@media only screen and (max-width: 1400px) {
+  .main-cards-wrapper {
+    height: 390px;
+  }
+
+  .announcements-down {
+    height: 275px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .active-sub-card-progress {
+    display: none;
+  }
+  .custom-table-cols-active > h6 {
+    font-size: 12px;
+  }
+  .product-image {
+    display: none;
+  }
+  .product-name {
+    padding-left: 0px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .main-content-wrapper {
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width: 530px) {
+  .cards-holder-active {
+    height: 65%;
+  }
+}

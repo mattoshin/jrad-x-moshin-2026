@@ -1,0 +1,228 @@
+@extends("partials/main")
+
+<head>
+
+    @extends("partials/title-meta", {"title": "Starter Page"}) @extends("partials/head-css")
+
+</head>
+
+@extends("partials/body")
+
+<!-- Begin page -->
+<div id="layout-wrapper">
+
+    @extends("partials/menu")
+
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="main-content">
+
+        <div class="page-content">
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                            <h4 class="mb-sm-0 font-size-18">Products</h4>
+
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+                                    <li class="breadcrumb-item active">Products</li>
+                                </ol>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <div class="row mb-2">
+                                    <div class="col-sm-4">
+                                        
+                                <h4 class="card-title">Products Table</h4>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="text-sm-end">
+                                            <div>
+                                                <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#myModal">New Product</button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- sample modal content -->
+                                        <div id="myModal" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true" role="dialog">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="myModalLabel">Product Modal</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="mb-3">
+                                                                    <label for="productname">Product Name</label>
+                                                                    <input id="productname" name="productname" type="text" class="form-control" placeholder="Product Name">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="productdesc">Product Description</label>
+                                                                    <textarea class="form-control" id="productdesc" rows="5" placeholder="Product Description" spellcheck="false"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <div class="mb-3">
+                                                                    <label for="price">Price</label>
+                                                                    <input id="price" name="price" type="text" class="form-control mb-3" placeholder="Price">
+                                                                    
+                                                                </div>
+                                                                <div class="mb-3" data-select2-id="16">
+                                                                    <label class="control-label">Discord Category</label>
+                                                                    <select class="form-control select2 select2-hidden-accessible" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                                                                        
+                                                                        <option value="FA" data-select2-id="17">Fashion</option>
+                                                                        <option value="EL" data-select2-id="18">Electronic</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                
+                                                                <div class="mb-3">
+                                                                    <label for="price">Options</label>
+                                                                    
+                                                                    <div class="form-check form-switch mb-3">
+                                                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
+                                                                        <label class="form-check-label" for="flexSwitchCheckChecked">Free Trial</label>
+                                                                    </div>
+                                                                    <div class="form-check form-switch mb-3">
+                                                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked2" checked="">
+                                                                        <label class="form-check-label" for="flexSwitchCheckChecked2">Live</label>
+                                                                    </div>
+                                                                    <div class="form-check form-switch mb-3">
+                                                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked3" checked="">
+                                                                        <label class="form-check-label" for="flexSwitchCheckChecked3">Sync'd</label>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-primary waves-effect waves-light">Save</button>
+                                                    </div>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal-dialog -->
+                                        </div><!-- /.modal -->
+                                </div><!-- end col-->
+                            </div>
+                            <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Product Name</th>
+                                        <th>Summary</th>
+                                        <th>Reviews</th>
+                                        <th>Price</th>
+                                        <th>Subscribers</th>
+                                        <th>MRR</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>NFT Moniter</td>
+                                        <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</td>
+                                        <td>
+                                            <div class="rating-star">
+                                                <span style="cursor: default;"><div class="rating-symbol" style="display: inline-block; position: relative;"><div class="rating-symbol-background mdi mdi-star-outline text-muted" style="visibility: hidden;"></div><div class="rating-symbol-foreground" style="display: inline-block; position: absolute; overflow: hidden; left: 0px; right: 0px; width: auto;"><span class="mdi mdi-star text-primary"></span></div>
+                                            </div>
+                                            <div class="rating-symbol" style="display: inline-block; position: relative;">
+                                                <div class="rating-symbol-background mdi mdi-star-outline text-muted" style="visibility: hidden;"></div>
+                                                <div class="rating-symbol-foreground" style="display: inline-block; position: absolute; overflow: hidden; left: 0px; right: 0px; width: auto;"><span class="mdi mdi-star text-primary"></span></div>
+                                            </div>
+                                            <div class="rating-symbol" style="display: inline-block; position: relative;">
+                                                <div class="rating-symbol-background mdi mdi-star-outline text-muted" style="visibility: hidden;"></div>
+                                                <div class="rating-symbol-foreground" style="display: inline-block; position: absolute; overflow: hidden; left: 0px; right: 0px; width: auto;"><span class="mdi mdi-star text-primary"></span></div>
+                                            </div>
+                                            <div class="rating-symbol" style="display: inline-block; position: relative;">
+                                                <div class="rating-symbol-background mdi mdi-star-outline text-muted" style="visibility: visible;"></div>
+                                                <div class="rating-symbol-foreground" style="display: inline-block; position: absolute; overflow: hidden; left: 0px; right: 0px; width: 0%;"><span></span></div>
+                                            </div>
+                                            <div class="rating-symbol" style="display: inline-block; position: relative;">
+                                                <div class="rating-symbol-background mdi mdi-star-outline text-muted" style="visibility: visible;"></div>
+                                                <div class="rating-symbol-foreground" style="display: inline-block; position: absolute; overflow: hidden; left: 0px; right: 0px; width: 0px;"><span></span></div>
+                                            </div>
+                                            </span><input type="hidden" class="rating" data-filled="mdi mdi-star text-primary" data-empty="mdi mdi-star-outline text-muted" data-readonly="" value="3"><span class="badge bg-info">3</span>
+                                        </div>
+                                    </td>
+                                    <td>$99.99</td>
+                                    <td>274</td>
+                                    <td>$27,120/mo</td>
+                                    <td><span class="badge bg-success">Live</span></td>
+                                    <td style="width: 100px">
+                                        <a href="product" class="btn btn-outline-secondary btn-sm edit" title="Edit">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- end row -->
+
+    </div>
+    <!-- container-fluid -->
+</div>
+<!-- End Page-content -->
+<!-- end modal -->
+
+@extends("partials/footer")
+</div>
+<!-- end main content-->
+
+</div>
+<!-- END layout-wrapper -->
+
+@extends("partials/right-sidebar") @extends("partials/vendor-scripts")
+
+<!-- Required datatable js -->
+<script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+<!-- Buttons examples -->
+<script src="assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+<script src="assets/libs/jszip/jszip.min.js"></script>
+<script src="assets/libs/pdfmake/build/pdfmake.min.js"></script>
+<script src="assets/libs/pdfmake/build/vfs_fonts.js"></script>
+<script src="assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="assets/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+
+<!-- Responsive examples -->
+<script src="assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+<!-- Datatable init js -->
+<script src="assets/js/pages/datatables.init.js"></script>
+
+<script src="assets/js/app.js"></script>
+
+</body>
+
+</html>

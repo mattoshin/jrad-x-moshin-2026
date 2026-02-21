@@ -1,0 +1,24 @@
+.invoice-details {
+  height: fit-content;
+}
+.client-details-wrap {
+  height: 35vh;
+}
+.change-payment {
+  color: #00878C;
+  background: transparent;
+  margin-left: 140px;
+  border: none;
+  padding: 10px;
+}
+
+.change-payment:hover {
+  color: white;
+  background: #00878C;
+  border-radius: 5px;
+}
+@media (max-width: 1200px) {
+  .invoice-details {
+    height: fit-content;
+  }
+}

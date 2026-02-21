@@ -1,0 +1,123 @@
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 45px;
+}
+.topbar-icons {
+  width: 45px;
+  height: 45px;
+  border-radius: 45px;
+  background-color: rgb(30 34 43);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.topbar-icons svg {
+  width: 100%;
+}
+.topbar-icons:hover {
+  background-color: rgb(40 44 53);
+}
+.topbar-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 45px;
+  background-color: rgb(30 34 43);
+  display: flex;
+  margin-left: 15px;
+  justify-content: center;
+  align-items: center;
+  object-fit: cover;
+}
+.profile-popup {
+  position: absolute;
+  left: -210px;
+  top: 45px;
+  border-radius: 15px;
+  width: 250px;
+  background-color: #1e222b;
+  height: fit-content;
+  padding: 10px;
+  border: 1px solid #333;
+}
+
+.popup-item {
+  margin: 10px;
+  height: fit-content !important;
+  border-bottom: 1px solid rgb(39, 43, 48);
+  padding: 0;
+}
+.popup-item p {
+  color: #6F767E !important;
+  margin: 2px;
+  padding: 5px;
+}
+.popup-arrow {
+  padding: 10px;
+  border-radius: 40px;
+}
+.popup-arrow:hover {
+  background-color: rgb(30 34 43);
+}
+.logout-item:hover > svg,
+.logout-item:hover > p {
+  transition: all 0.2s ease-in-out;
+  color: rgba(255, 0, 0, 0.678) !important;
+}
+.topbar-text {
+  font-weight: 600; 
+}
+.new-notification-icon {
+  width: 8px;
+  height: 8px;
+  border-radius: 40px;
+  background-color: #ef6b78;
+  transform: translate(-20px, 12px);
+  border: 1px solid #222433;
+}
+
+.new-message-icon {
+  width: 8px;
+  height: 8px;
+  border-radius: 40px;
+  background-color: #ef6b78;
+  transform: translate(-15px, 12px);
+  border: 1px solid #222433;
+}
+
+@media (max-width: 600px) {
+  .topbar-icons {
+    width: 35px;
+    height: 35px;
+  }
+  .topbar-image {
+    width: 35px;
+    height: 35px;
+  }
+  .toggle-button{
+    
+    margin-left: -30px;
+  }
+  .topbar-text {
+    display: none;
+  }
+  .new-notification-icon {
+    transform: translate(-15px, 8px);
+  }
+
+  .new-message-icon {
+    transform: translate(-10px, 8px);
+  }
+}
+@media (max-width: 350px) {
+  .topbar-text {
+    display: none;
+  }
+  .topbar {
+    justify-content: center;
+  }
+  .profile-popup {
+    width: 200px;
+    transform: translateX(50px);
+  }
+}

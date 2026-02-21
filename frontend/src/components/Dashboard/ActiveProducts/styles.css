@@ -1,0 +1,42 @@
+.dropdown-button {
+  background-color: #1e222b !important;
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: gray !important;
+  opacity: 1; /* Firefox */
+}
+
+.dropdown-toggle::after {
+  display: flex;
+  align-self: center !important;
+}
+
+.input-products {
+  color: white !important;
+}
+
+.product-card-active {
+  border-radius: 6px;
+  background-color: #1E222B;
+  height: fit-content;
+  display: flex;
+  align-content: center;
+  padding: 18px 0px;
+}
+
+.product-card-active:hover {
+    cursor: pointer;
+    transition: 0.2s linear;
+    transform: scale(1.01);
+}
+
+@media only screen and (max-width: 1190px) {
+  .right-side-products {
+    display: none !important;
+  }
+}

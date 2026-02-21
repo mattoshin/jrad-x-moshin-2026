@@ -1,0 +1,387 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\Cookie;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
+use Laravel\Socialite\Two\InvalidStateException;
+use App\Models\Products;
+use App\Models\Plans;
+use App\Models\Business;
+use App\Helper\Tokenable;
+use App\Models\Permissions;
+use App\Models\Servers;
+use Illuminate\Support\Arr;
+
+
+
+
+
+
+class discordStrategiesController extends Controller
+{
+
+
+    protected $users;
+
+    public function __construct(User $users)
+    {
+        $this->users = $users;
+    }
+     public function redirectToProvider(Request $request)
+     {
+
+            return $this->getAuthorizationFirst();
+
+     }
+
+     public function handleProviderCallback(Request $request)
+     {
+        try {
+            $discord = $this->getDiscordUser();
+            if ($request->error) {
+                return redirect()->route('login');
+                // return response()->json(['message' => 'Sorry, something went wrong. Please try again' ], 403);
+            }
+            if (is_null($discord->email)) {
+                return redirect()->route('dashboard.verify')->with('error', 'Sorry, no email address found!');
+                // return response()->json(['message' => 'Sorry, no email address was found. Please try again' ], 403);
+            }
+            if (!$request->code) {
+                return $this->getAuthorizationFirst();
+            }
+            
+            $discordFix = [
+                'id' => $discord->id,
+                'nickname' => $discord->nickname,
+                'avatar' => $discord->avatar,
+                'email' => $discord->email,
+                'refreshToken' => $discord->refreshToken,
+                'expiresIn' => $discord->expiresIn,
+                'token' => $discord->token
+            ];
+            $user = $this->users->findByUsername($discordFix["id"]);
+	    if(!$user){
+            	$user = $this->users->findByUsernameOrCreate($discordFix)->gnerateAndSaveApiAuthToken();
+	    }
+            // $plan = $this->makeAPlan($user);
+            // $busnies=$this->makeABusiness($user);
+             //$guilds = $this->getGuilds($user);
+            $request->session()->regenerate();
+            if ($user) {
+                $token=Auth::login($user, true);
+                // dd(Auth::user());
+
+                $res=json_encode([
+                    'user' => Auth::user()->id,
+                    'username' => Auth::user()->username,
+                    'token' => Auth::user()->api_token
+                ]);
+                 //dd($res);'ocean.cadash.net'
+            // return redirect('/home')->cookie('user', $res,1000*12,'/',null,true,false)->with(['user'=>$user]);
+            return redirect('/admin')->cookie('admin', $res,1000*12,'/','admin.mocean.info',true,false)->with(['admin'=>$user]);
+            // return response()->json(['message' => 'Successfully logged in... redirecting...' ]);
+            }
+
+        } catch (InvalidStateException $e) {
+            return redirect('/');
+            // return response()->json(['message' => 'Sorry, something went wrong. Please try again' ], 403);
+        }
+        return redirect('/');
+        // return response()->json(['message' => 'Something has gone wrong, please try again'], 403);
+     }
+
+     public function loginUser(Request $request){
+        $data = $request->all();
+        if(!$data['access_token']){
+            return [
+                "status" => "error",
+                "message" => "Invalid Access Token"
+            ];
+        }
+        if(!$data['refresh_token']){
+            return [
+                "status" => "error",
+                "message" => "Invalid Refresh Token"
+            ];
+        }
+        $token = $data['access_token'];
+        $refresh = $data['refresh_token'];
+        $info_request = "https://discordapp.com/api/users/@me";
+        $response = Http::withToken($token)->get($info_request);
+        $response->throw();
+        $jsonResponse = json_decode($response->getbody(), true);
+        $discord = [
+            "id" => $jsonResponse['id'],
+            "nickname" => $jsonResponse['username']."#".$jsonResponse['discriminator'],
+            "avatar" => $jsonResponse['avatar'],            
+            "email" => $jsonResponse['email'],
+            "refreshToken" => $refresh,
+            "token" => $token,
+            "expiresIn" => 604800,    
+        ];
+        $user = $this->users->findByUsernameOrCreate($discord)->gnerateAndSaveApiAuthToken();
+        return [
+            "status" => "success",
+            'token' => $user["api_token"]
+        ];
+
+     }
+     
+     /**
+      * @return mixed
+      */
+      private function getAuthorizationFirst()
+      {
+          return Socialite::driver('discord')
+          ->setScopes(['email','identify','guilds.join','guilds'])
+          ->with(['prompt'=>'true'])
+         ->redirect();
+      }
+      /**
+       * @return mixed
+       */
+
+       protected function getDiscordUser()
+       {
+           try{
+              $user= Socialite::driver('discord')->stateless()->user();
+           }catch(\Exception $e){
+               return redirect('/');
+           }return$user;
+
+       }
+       
+       public function findByUsernameOrCreate(Requset $request, $user)
+    {   
+        return User::updateOrCreate(
+            ['discord_id' => $user->id],
+            [
+                'username' => $user->username,
+                'avatar' => $user->avatar,
+                'email' => $user->email,
+                'refresh_token' => $user->refreshToken,
+                'expires_in' => $user->expiresIn,
+                'admin'=> $request->admin,
+                'ip' => $request->ip,
+                'remember_token'=>$request->token,
+            ]
+        );
+    }
+    public function findByUsername(Requset $request, $user)
+    {   
+        return User::find($request->token);
+    }
+    /**
+     * @retrun mixed
+     */
+
+     public function makeAPlan($user){
+       $plan= Plans::updateOrCreate([
+             'user'=>$user->id
+         ]);
+         return $plan;
+     }
+     public function makeABusiness($user){
+        $business= Business::updateOrCreate([
+              'owner'=>$user->id
+          ]);
+          return $business;
+      }
+       /**
+        * @return mixed
+        */
+
+       public function returnHome(Request $request)
+       { 
+          
+          $requests = json_decode($request->cookie('admin'));
+        // $business = Business::where('owner',$requests->user->id)->first();
+        //     $null = $business::whereNull('name')
+        //     ->orWhereNull('twitter')
+        //     ->orWhereNull('email')->get();
+           if($request->hascookie('admin')){
+                // if($null->count()){
+                //     return redirect('account');
+                // }else{
+                    return view('manage-monitors');
+                // }
+            }else{
+
+                return redirect('/login');
+            }
+       }
+   public function me(Request $request)
+    {
+        if(!$request->bearerToken()){
+            return response([
+                "status" => "error",
+                "message" => "Missing Authorization Token"
+            ], 401);
+        }
+        $user = User::where('api_token', $request->bearerToken()) -> first();
+        if(!$user){
+            return response([
+                "status" => "error",
+                "message" => "Invalid Authorization Token"
+            ], 401);
+        }
+        return [
+            'status' => 'success',
+            'user' => [
+                "id"=>$user["id"],
+                "discordId"=>strval($user["discord_id"]),
+                "username"=>$user["username"],
+                "email"=>$user["email"],
+                "avatar"=>$user["avatar"],
+                "creationDate"=>$user["creationDate"],
+                "expiresIn"=>$user["expires_in"]
+            ]
+        ];
+    }
+
+    public function messageUser(Request $request){
+        $userParam = $request->user;
+        $user = User::where('id', $userParam) -> first();
+        if(!$user){
+            return [
+                "status" => "error",
+                "message" => "User Not Found"
+            ];
+        }
+        if(!$request->message){
+            return [
+                "status" => "error",
+                "message" => "Empty Message"
+            ];
+        }
+        $response = Http::withHeaders([
+            "Content-Type" => "application/json",
+            "Content-Length" => "0",
+            "Authorization" => "Bot " . env('DISCORD_BOT_TOKEN'),
+        ])->post("https://discordapp.com/api/users/@me/channels", [
+            "recipient_id" => $user->discord_id
+        ]);
+        $channel = json_decode($response->getbody(), true)["id"];
+        $xo = Http::withHeaders([
+            "Content-Type" => "application/json",
+            "Content-Length" => "0",
+            "Authorization" => "Bot " . env('DISCORD_BOT_TOKEN'),
+        ])->post("https://discordapp.com/api/channels/".$channel."/messages", [
+            "content" => $request->message
+        ]);
+        return $xo->getbody();
+    }
+
+    function getGuilds($token)
+    { 
+        $info_request = "https://discordapp.com/api/v6/users/@me/guilds";
+        $response = Http::withToken($token)->get($info_request);
+        $response->throw();
+        $guilds = json_decode($response->getbody(), true);
+        return $guilds;
+      }
+
+    public function refresh()
+    {
+        return response()->json([
+            'status' => 'success',
+            'user' => Auth::user(),
+            'authorization' => [
+                'token' => Auth::refresh(),
+                'type' => 'bearer',
+            ]
+        ]);
+    }
+
+   public function logout(Request $request)
+   {
+        \Cookie::expire('admin');
+        Auth::logout();
+        return redirect('/home');
+   }
+   public function account(Request $request){
+       if($request->hascookie('admin')){
+           return view('account-settings');
+       }
+       return redirect('/login');
+   }
+   public function gnerateAndSaveApiAuthToken()
+   {
+       $token =Str::random(60);
+       $this->api_token =$token;
+       $this->save();
+       return $this;
+   }
+
+
+   public function getBusinesses(Request $request)
+   {
+        
+
+        
+        if(!$request->bearerToken()){
+            return response([
+                "status" => "error",
+                "message" => "Missing Authorization Token"
+            ], 401);
+        }
+        $user = User::where('api_token', $request->bearerToken()) -> first();
+        if(!$user){
+            return response([
+                "status" => "error",
+                "message" => "Invalid Authorization Token"
+            ], 401);
+        }
+        $userId = $user["id"];
+        $servers = collect($this->getGuilds($user["access_token"]));
+
+        $matchThese = ['user' => $userId, 'permission' => '8'];
+        $collection = Permissions::where($matchThese)->get();
+        $serverids =  $collection->pluck('serverID');
+        $serverGuild = Servers::where('owner',$userId)->get();
+        
+        $filtered = $servers->filter(function($server) use ($serverids) {
+            if($serverids->contains($server["id"]) || strstr($server["owner"], 1)){                   
+                return $server;
+            }
+        });
+        $results = collect($filtered)
+        ->map(function ($row) use ($serverids, $serverGuild) {
+            $collection = collect($serverGuild);
+            $filteredCollection = $collection->where('guild_id',$row["id"])->first();
+            $serverToken=null;
+            if ($filteredCollection){
+                $filteredBusiness = $filteredCollection->businessToken->api_token;
+                if ($filteredBusiness){
+                    $serverToken = $filteredBusiness;
+                }
+            }
+            return [
+                "id"=>$row["id"],
+                "name"=>$row["name"],
+                "icon"=>$row["icon"],
+                "owner"=>$row["owner"],
+                "permission"=>8,
+                "token"=>$serverToken
+            ];
+        });
+        $guilds = array();
+        foreach ($results as $guild){
+            $guild_token = $guild->token ?? null;
+            if($guild_token !== null) {
+                $guilds = array_merge(array($guild), $guilds);
+            } else {
+                array_push($guilds, $guild);
+            }
+        }
+        return $guilds;
+   }
+
+   
+}
