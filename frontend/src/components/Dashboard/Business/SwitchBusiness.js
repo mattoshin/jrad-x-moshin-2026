@@ -1,20 +1,14 @@
 import { BusinessCard } from "./BusinessCards/BusinessCard";
-import axios from "axios";
 import { useEffect, useState } from "react";
+import { guilds as guildsApi } from "../../../api";
 const SwitchBusiness = () => {
   const [businesses, setBusinesess] = useState([]);
   const [errorCheck, setError] = useState(false);
 
   useEffect(() => {
-    let token = localStorage.getItem("token");
     const getData = async () => {
       try{
-        const guildsResponse = await axios.get(
-          "https://admin.mocean.info/guilds",
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
+        const guildsResponse = await guildsApi();
         setBusinesess(guildsResponse.data);
       } catch {
         setError(true);

@@ -1,0 +1,92 @@
+services:
+
+  # ── MySQL (Laravel backend) ───────────────────────────────────────
+  mysql:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: galactic
+      MYSQL_USER: galactic
+      MYSQL_PASSWORD: galactic_db_pass
+      MYSQL_ROOT_PASSWORD: galactic_root_pass
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── PostgreSQL (galactic-workers) ────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: galactic_workers
+      POSTGRES_USER: galactic
+      POSTGRES_PASSWORD: galactic_pg_pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U galactic"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── Laravel backend ───────────────────────────────────────────────
+  backend:
+    build: ./backend
+    restart: always
+    depends_on:
+      mysql:
+        condition: service_healthy
+    volumes:
+      - storage_data:/var/www/html/storage
+
+  # ── React frontend ────────────────────────────────────────────────
+  frontend:
+    build: ./frontend
+    restart: always
+
+  # ── galactic-workers ──────────────────────────────────────────────
+  workers:
+    build: ./galactic-workers
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+    env_file:
+      - ./galactic-workers/.env
+    environment:
+      DATABASE_URL: postgresql://galactic:galactic_pg_pass@postgres:5432/galactic_workers
+
+  # ── Nginx reverse proxy ───────────────────────────────────────────
+  nginx:
+    image: nginx:alpine
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - backend
+      - frontend
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - certbot_www:/var/www/certbot:ro
+      - certbot_certs:/etc/letsencrypt:ro
+
+  # ── Certbot (SSL) ─────────────────────────────────────────────────
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - certbot_www:/var/www/certbot
+      - certbot_certs:/etc/letsencrypt
+    entrypoint: /bin/sh -c "trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done"
+
+volumes:
+  mysql_data:
+  postgres_data:
+  storage_data:
+  certbot_www:
+  certbot_certs:

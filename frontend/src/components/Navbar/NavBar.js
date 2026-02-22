@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import "./NavBar.css";
-import logo from "../../assets/logo.png";
 function NavBar() {
   const [click, setClick] = useState(false);
 
@@ -12,8 +11,7 @@ function NavBar() {
         <div className="nav-container">
           <NavLink to="/" className="nav-logo">
             <div className="d-flex align-items-center">
-              <img src={logo} width={70} height={70} alt="logo" />
-              <h3 className="text-white mocean-text">Mocean</h3>
+              <h3 className="text-white mocean-text">Galactic</h3>
             </div>
           </NavLink>
 

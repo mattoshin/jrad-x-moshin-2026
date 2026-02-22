@@ -1,71 +1,73 @@
-  
-  .content-container {
-    width: 100%;
-    height: 80px;
-    margin: auto;
-    max-width: 1500px;
-  }
+.galactic-login-page {
+  min-height: 100vh;
+  background-color: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  /* Welcome Page Styling */
-  .login-page {
-    height: 100vh !important;
-  }
+.galactic-login-card {
+  background-color: #161618;
+  border: 1px solid #2a2a2e;
+  border-radius: 16px;
+  padding: 40px 36px;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
 
-  
-  .login-text-stack {
-    margin-top: 50%;
-    margin-left: 25px;
-    color: white;
-  }
-  
-  .login-btn {
-    margin-top: 20px;
-    width: 220px;
-    height: 50px;
-    color: #5ecdd1 !important;
-    background: #0c222f;
-    border: 1px solid #2a545c;
-    box-shadow: 0 20px 40px rgba(48, 191, 84, 0.08);
-    border-radius: 8px;
-    padding: 10px 28px;
-  }
-   
-  
-.login-text {
-    text-transform:none;
-    text-align: left;
-    margin-bottom: 8px;
-    /* background:  */
-  }
-  .login-dashboard__title {
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 42px;
-    line-height: 50px;
-    color: #ffffff;
-    text-align: center;
-    margin-top: 20%;
-  }
+.galactic-rocket-icon {
+  margin-bottom: 16px;
+}
 
-  /* Image Styling */
-  .login-dashboard-image {
-    margin: auto;
-    margin-top: 200px !important;
-  }
+.galactic-title {
+  color: #ffffff;
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.3px;
+}
 
-  
-@media screen and (max-width: 1199px) {
-    
-  .login-text-stack {
-    margin-top: 32%;
+.galactic-subtitle {
+  color: #8a8a8e;
+  font-size: 14px;
+  margin: 0 0 28px 0;
+  text-align: center;
+}
 
-  }
+.galactic-btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
 
-  .login-dashboard__title {
-    display:none;  
-  }
-  .login-text {
-    text-align: center;
-  }
+.galactic-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background-color: #1e1e20;
+  border: 1px solid #2e2e32;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 13px 20px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.galactic-btn:hover {
+  background-color: #2a2a2e;
+  border-color: #3a3a3e;
+}
+
+.galactic-discord-icon {
+  font-size: 20px;
+  color: #ffffff;
 }

@@ -1,74 +1,40 @@
-import React from "react";
-import { Col, Button, Stack } from "react-bootstrap";
-import logo from "../../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
-import animateScrollTo from "animated-scroll-to";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDiscord } from "@fortawesome/free-brands-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const HomeBanner = () => {
   const navigate = useNavigate();
   return (
-    <>
-      <Col xl={6} lg={12} xs={12} className="welc-left-side">
-        <Stack className="welc-text-stack">
-          <div className="welcome-text">WELCOME TO MOCEAN</div>
-          <div className="hero-title">Premier B2B</div>
-          <div className="hero-title">Information Services</div>
-          <div className="hero-description w-75">
-            Mocean provides the earliest alpha, most thorough analysis, and best
-            release guides for your community.
-          </div>
-          <Col lg={5} className="d-flex welc-btn-wrapper">
-            <Button variant="none" className="welc-btn" onClick={()=>{
-              navigate("switch-business");
-            }}>
-              Dashboard
-            </Button>
-            <a
-              style={{
-                cursor: "pointer",
-                border: "none",
-                textDecoration: "none",
-                background: "none",
-                boxShadow: "none",
-              }}
-              onClick={() => {
-                let el = document.getElementById("about-us");
-                animateScrollTo(el, { speed: 1400 });
-              }}
-              variant="none"
-              className="ms-2 welc-btn text-center d-flex align-items-center justify-content-center"
-            >
-              Learn More
-            </a>
-          </Col>
-        </Stack>
-      </Col>
-      <Col xl={6} lg={6} xs={12}>
-        <div className="dashboard-image">
-          <div className="dashboard-header">
-            <div className="dashboard-row">
-              <div className="dashboard-circle" />
-              <div className="dashboard-circle" />
-              <div className="dashboard-circle" />
-            </div>
-            {/* Shark Image */}
-            <div className="dashboard-img-container">
-              <img src={logo} width={350} height={350} />
-            </div>
-
-            {/* Dashboard Image */}
-            {/* <div className="dashboard-img-container">
-                <img
-                  src={preview}
-                  width={"100%"}
-                  height={"100% !important"}
-                  style={{ zIndex: "-1", bottom: "0px" }}
-                />
-              </div> */}
-          </div>
-        </div>
-      </Col>
-    </>
+    <div className="galactic-hero">
+      <div className="galactic-hero-badge">Data Intelligence Platform</div>
+      <h1 className="galactic-hero-title">
+        Financial Alpha for the
+        <br />
+        <span className="galactic-hero-accent">Investors of Tomorrow</span>
+      </h1>
+      <p className="galactic-hero-subtitle">
+        Real-time market data, stock insights, crypto signals, and multi-vertical
+        intelligence — all in one place.
+      </p>
+      <div className="galactic-hero-actions">
+        <button
+          className="galactic-hero-btn-primary"
+          onClick={() => navigate("/login")}
+        >
+          Get Started <FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: 8 }} />
+        </button>
+        <a
+          className="galactic-hero-btn-secondary"
+          href="https://discord.gg/F7syGdJMZq"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <FontAwesomeIcon icon={faDiscord} style={{ marginRight: 8 }} />
+          Join Discord
+        </a>
+      </div>
+    </div>
   );
 };
 

@@ -48,6 +48,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/*" element={<Home />} />
           <Route path="/handle" element={<Handle />} />
+          <Route path="/auth/discord/callback" element={<Handle />} />
           <Route path="/guild-oauth" element={<Guild />} />
           <Route path="/logout" element={<Logout />} />
         </Route>
@@ -88,6 +89,7 @@ function App() {
           <Route element={<Layout2 />}>
             <Route element={<TopBar2 />}>
               <Route path="/switch-business" element={<SwitchBusiness />} />
+              <Route path="/dashboard" element={<SwitchBusiness />} />
             </Route>
           </Route>
         </Route>

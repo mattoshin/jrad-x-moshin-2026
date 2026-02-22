@@ -1,34 +1,34 @@
-import React from "react";
-import { Row, Col, Stack } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import { faTwitter, faDiscord } from "@fortawesome/free-brands-svg-icons";
+import { faDiscord, faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 const HomeConnect = () => {
   return (
-    <Row style={{ margin: 0 }}>
-      <div className="social-title">Connect with us</div>
-      <div className="d-flex justify-content-center">
-        <div className="social-card-wrapper">
-          <a href="https://discord.gg/F7syGdJMZq">
-            <Stack className="social-card">
-              <Col className="social-icon">
-                <FontAwesomeIcon icon={faDiscord} className="mr-2" />
-              </Col>
-            </Stack>
-          </a>
-        </div>
-        <div className="social-card-wrapper ms-3">
-          <a href="https://twitter.com/moceanofficial">
-            <Stack className="social-card">
-              <Col className="social-icon">
-                <FontAwesomeIcon icon={faTwitter} className="mr-2" />
-              </Col>
-            </Stack>
-          </a>
-        </div>
+    <section className="galactic-connect">
+      <h2 className="galactic-section-title">Join the community</h2>
+      <p className="galactic-section-subtitle">
+        Connect with traders and analysts using Galactic every day.
+      </p>
+      <div className="galactic-connect-cards">
+        <a
+          className="galactic-connect-card"
+          href="https://discord.gg/F7syGdJMZq"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <FontAwesomeIcon icon={faDiscord} className="galactic-connect-icon galactic-connect-discord" />
+          <span>Discord</span>
+        </a>
+        <a
+          className="galactic-connect-card"
+          href="https://twitter.com/galacticdata"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <FontAwesomeIcon icon={faTwitter} className="galactic-connect-icon" />
+          <span>Twitter</span>
+        </a>
       </div>
-    </Row>
+    </section>
   );
 };
 

@@ -1,87 +1,67 @@
-import React from "react";
-import { Row, Col, Stack } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faChartLine,
+  faBitcoinSign,
   faNewspaper,
-  faMagnifyingGlassChart,
-  faBook,
-  faStopwatch,
-  faBookOpenReader,
-  faSackDollar,
+  faHouse,
+  faTrophy,
+  faLayerGroup,
 } from "@fortawesome/free-solid-svg-icons";
+
+const features = [
+  {
+    icon: faChartLine,
+    title: "Stocks",
+    desc: "Real-time quotes, sentiment analysis, earnings reports, and market movers.",
+  },
+  {
+    icon: faBitcoinSign,
+    title: "Crypto",
+    desc: "Digital asset signals, on-chain data, and DeFi market intelligence.",
+  },
+  {
+    icon: faTrophy,
+    title: "Sports",
+    desc: "Live scores, stats, and data feeds across major leagues.",
+  },
+  {
+    icon: faHouse,
+    title: "Real Estate",
+    desc: "Property market trends, listings data, and investment signals.",
+  },
+  {
+    icon: faNewspaper,
+    title: "News",
+    desc: "Curated breaking news and macro trends across all verticals.",
+  },
+  {
+    icon: faLayerGroup,
+    title: "Multi-Vertical",
+    desc: "Cards, collectibles, and more — all through a single unified platform.",
+  },
+];
 
 const HomeInfo = () => {
   return (
-    <Stack className="desc-panel-text">
-      <div id="about-us" className="about-title">
-        Unparalleled Information Curation and Aggregation
+    <section className="galactic-features" id="about-us">
+      <div className="galactic-features-header">
+        <h2 className="galactic-section-title">Everything you need to stay ahead</h2>
+        <p className="galactic-section-subtitle">
+          Seven data verticals. One platform. Zero noise.
+        </p>
       </div>
-      <div className="about-description">
-        The Mocean team is composed of over 50 web3, crypto, and NFT experts.
-        All of our analysts work full-time in the web3 space to give your
-        community comprehensive release guides, investment analysis, news, macro
-        trends, educational content, and much more. No more having to spend
-        hours trying to compile information from different sources: our analysts
-        seek out and curate only the most important material to save you more
-        time and make your clients more profit.
+      <div className="galactic-features-grid">
+        {features.map((f) => (
+          <div className="galactic-feature-card" key={f.title}>
+            <div className="galactic-feature-icon">
+              <FontAwesomeIcon icon={f.icon} />
+            </div>
+            <div className="galactic-feature-title">{f.title}</div>
+            <div className="galactic-feature-desc">{f.desc}</div>
+          </div>
+        ))}
       </div>
-      <Row className="about-row">
-        <Col className="about-column" xl={4}>
-          <div className="about-icon">
-            <FontAwesomeIcon icon={faNewspaper} className="mr-2" />
-          </div>
-          <div className="about-mini-title">News & Macro Trends</div>
-          <div className="about-mini-desc">
-            Keep up to date with the news you need to know.
-          </div>
-        </Col>
-        <Col className="about-column" xl={4}>
-          <div className="about-icon">
-            <FontAwesomeIcon icon={faMagnifyingGlassChart} className="mr-2" />
-          </div>
-          <div className="about-mini-title">In-Depth Release Guides</div>
-          <div className="about-mini-desc">Never miss a profitable drop.</div>
-        </Col>
-        <Col className="about-column" xl={4}>
-          <div className="about-icon">
-            <FontAwesomeIcon icon={faBook} className="mr-2" />
-          </div>
-          <div className="about-mini-title">Project Analysis</div>
-          <div className="about-mini-desc">
-            Make informed investment decisions.
-          </div>
-        </Col>
-      </Row>
-      <Row className="about-row">
-        <Col className="about-column" xl={4}>
-          <div className="about-icon">
-            <FontAwesomeIcon icon={faStopwatch} className="mr-2" />
-          </div>
-          <div className="about-mini-title">Whitelist Opportunities</div>
-          <div className="about-mini-desc">
-            Find profitable projects before anyone else.
-          </div>
-        </Col>
-        <Col className="about-column" xl={4}>
-          <div className="about-icon">
-            <FontAwesomeIcon icon={faBookOpenReader} className="mr-2" />
-          </div>
-          <div className="about-mini-title">Educational Content</div>
-          <div className="about-mini-desc">
-            Learn from experts in the space.
-          </div>
-        </Col>
-        <Col className="about-column" xl={4}>
-          <div className="about-icon">
-            <FontAwesomeIcon icon={faSackDollar} className="mr-2" />
-          </div>
-          <div className="about-mini-title">And Much More…</div>
-          <div className="about-mini-desc">
-            See our clients’ success for yourself.
-          </div>
-        </Col>
-      </Row>
-    </Stack>
+    </section>
   );
 };
 
